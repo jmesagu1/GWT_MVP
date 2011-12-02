@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>				
+		<center>
+			<br/>
+		<h1>Bienvenido a ACME Biblioteca</h1>
+		<br/>
+			<table>
+				<tr>
+					<td><g:Button ui:field="butMasters" text="Configurar Maestros"/></td>
+				</tr>
+				<tr>
+					<td><g:Button ui:field="butRegisterCustomer" text="Administración de Usuarios"/></td>
+				</tr>
+				<tr>
+					<td><g:Button ui:field="butAdminMaterial">Administración de Material</g:Button></td>
+				</tr>
+			</table>
+		</center>				
+	</g:HTMLPanel>
+</ui:UiBinder> 

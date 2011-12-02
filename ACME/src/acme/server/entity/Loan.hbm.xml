@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/11/2011 12:52:12 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="acme.server.entity.Loan" table="loan" catalog="acmedb">
+        <id name="idLoan" type="long">
+            <column name="id_loan" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customer" class="acme.server.entity.Customer" fetch="select">
+            <column name="id_customer" />
+        </many-to-one>
+        <many-to-one name="material" class="acme.server.entity.Material" fetch="select">
+            <column name="id_material" />
+        </many-to-one>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" length="45" />
+        </property>
+        <property name="loanDate" type="timestamp">
+            <column name="loan_date" length="19" />
+        </property>
+        <property name="returnDate" type="timestamp">
+            <column name="return_date" length="19" />
+        </property>
+        <one-to-one name="ticket" class="acme.server.entity.Ticket"></one-to-one>
+    </class>
+</hibernate-mapping>

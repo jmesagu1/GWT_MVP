@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/11/2011 12:52:12 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="acme.server.entity.Collection" table="collection" catalog="acmedb">
+        <id name="idCollection" type="long">
+            <column name="id_collection" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ticketPrice" class="acme.server.entity.TicketPrice" fetch="select">
+            <column name="id_current_ticket" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="letters" type="string">
+            <column name="letters" length="45" />
+        </property>
+        <property name="reserve" type="java.lang.Boolean">
+            <column name="reserve" />
+        </property>
+        <set name="materials" table="material" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_collection" />
+            </key>
+            <one-to-many class="acme.server.entity.Material" />
+        </set>
+    </class>
+</hibernate-mapping>

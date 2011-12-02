@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+	<ui:style>
+		.panel {
+			background-color: ivory;
+		}
+	</ui:style>
+	<g:FlowPanel styleName="{style.panel}">			
+		<g:HTMLPanel>
+			<center>
+				<h1>Información</h1>
+				<br></br>				
+				<g:Label ui:field="labMessaje"/>
+				<table>
+					<tr>
+						<td><g:Button ui:field="butAcept" text="Aceptar"/></td>
+						<td><g:Button ui:field="butPrint" text="Imprimir"/></td>
+					</tr>
+				</table>
+			</center>
+		</g:HTMLPanel>
+	</g:FlowPanel>
+</ui:UiBinder>

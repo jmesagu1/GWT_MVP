@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/11/2011 12:52:12 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="acme.server.entity.Customer" table="customer" catalog="acmedb">
+        <id name="idCustomer" type="java.lang.Long">
+            <column name="id_customer" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45">
+                <comment>This is the customer first name.</comment>
+            </column>
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="mail" type="string">
+            <column name="mail" length="45" />
+        </property>
+        <property name="dni" type="java.lang.Long">
+            <column name="dni" unique="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="birthday" length="10" />
+        </property>
+        <property name="registerDate" type="date">
+            <column name="register_date" length="10" />
+        </property>
+        <one-to-one name="contactCustomer" class="acme.server.entity.ContactCustomer"></one-to-one>
+        <set name="loans" table="loan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_customer" />
+            </key>
+            <one-to-many class="acme.server.entity.Loan" />
+        </set>
+    </class>
+</hibernate-mapping>

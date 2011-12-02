@@ -1,0 +1,3 @@
+# Module acme
+# RPC service class, partial path of RPC policy file
+acme.client.services.WrapperService, 627C4E3C37FBB58479D6ACCE00780BFD.gwt.rpc

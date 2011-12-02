@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="author"></table-filter>
+	<table-filter match-name="author_material"></table-filter>
+	<table-filter match-name="classification"></table-filter>
+	<table-filter match-name="collection"></table-filter>
+	<table-filter match-name="contact_customer"></table-filter>
+	<table-filter match-name="customer"></table-filter>
+	<table-filter match-name="kind_material"></table-filter>
+	<table-filter match-name="loan"></table-filter>
+	<table-filter match-name="material"></table-filter>
+	<table-filter match-name="ticket"></table-filter>
+	<table-filter match-name="ticket_price"></table-filter>
+	<table catalog="acmedb" name="ticket"></table>
+	<table catalog="acmedb" name="material"></table>
+	<table catalog="acmedb" name="classification"></table>
+	<table catalog="acmedb" name="contact_customer"></table>
+	<table catalog="acmedb" name="collection"></table>
+	<table catalog="acmedb" name="kind_material"></table>
+	<table catalog="acmedb" name="customer"></table>
+	<table catalog="acmedb" name="author_material"></table>
+	<table catalog="acmedb" name="author"></table>
+	<table catalog="acmedb" name="loan"></table>
+	<table catalog="acmedb" name="ticket_price"></table>
+</hibernate-reverse-engineering>

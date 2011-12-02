@@ -1,0 +1,76 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:t="urn:import:com.extjs.gxt.ui.client.widget.table" 
+	xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+	xmlns:p1="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>		
+	<center>
+		<br/>
+		<h1>Cliente</h1>
+		<br/>
+		<Table>
+			<tr>
+				<td><h1>Datos Cliente</h1></td>
+				<td><h1>Datos del Contacto</h1></td>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+				<td><g:Label text="Nombre:"/></td>
+				<td><g:TextBox ui:field="txtName"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Apellido:"/></td>
+				<td><g:TextBox ui:field="txtLastname"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Documento:"/></td>
+				<td><g:TextBox ui:field="txtDNI"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Dirección:"/></td>
+				<td><g:TextBox ui:field="txtAddress"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Teléfono:"/></td>
+				<td><g:TextBox ui:field="txtPhone"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Correo:"/></td>
+				<td><g:TextBox ui:field="txtMail"/></td>
+			</tr>
+			<tr>
+				<td><g:Label text="Fecha de Nacimiento:"/></td>
+				<td> <form:DateField fieldLabel="birth" ui:field="birthDate"/></td>
+			</tr>							
+					</table>
+				</td>					
+				<td>
+					<table>
+						<tr>
+							<td><g:Label text="Nombre:"/></td>
+							<td><g:TextBox ui:field="txtCFirstName"/></td>
+						</tr>						
+						<tr>
+							<td><g:Label text="Apellido:"/></td>
+							<td><g:TextBox ui:field="txtCLastName"/></td>							
+						</tr>
+						<tr>
+							<td><g:Label text="Teléfono"/></td>
+							<td><g:TextBox ui:field="txtCPhone"/></td>
+						</tr>
+					</table>								
+				</td>
+			</tr>		
+		</Table>
+		<g:Button ui:field="butSave">Guardar</g:Button>
+		</center>
+	</g:HTMLPanel>
+</ui:UiBinder> 

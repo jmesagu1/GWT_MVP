@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>		
+		<center>
+			<h1>Material</h1>
+			<br></br>
+			<table>
+				<tr>
+					<td><g:Label text="Nombre:"/></td>
+					<td><g:TextBox ui:field="txtName"/></td>
+				</tr>				
+				<tr>
+					<td><g:Label text="Unidades:"/></td>
+					<td><g:LongBox ui:field="txtUnits" /></td>
+				</tr>				
+				<tr>
+					<td><g:Label text="Edición:"/></td>
+					<td><g:TextBox ui:field="txtEdition"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="Fecha Publicación:"/></td>
+					<td><p1:DateBox ui:field="txtPublishDate"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="Colección:"/></td>
+					<td><g:ListBox ui:field="cmbCollection"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="Clasificación:"/></td>
+					<td><g:ListBox ui:field="cmbClassification"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="Tipo de Material"/></td>
+					<td><g:ListBox ui:field="cmbKindMaterial"/>		</td>
+				</tr>
+			</table>
+			<g:Button ui:field="butSelectAuthor">Seleccionar Autor</g:Button>					
+		</center>		
+	</g:HTMLPanel>
+</ui:UiBinder> 

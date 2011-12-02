@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>		
+		<center>
+		<h1>Autor</h1>
+			<table>
+				<tr>
+					<td><g:Label text="Nombre:"/></td>
+					<td><g:TextBox ui:field="txtName"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="Apellido:"/>	</td>
+					<td><g:TextBox ui:field="txtSurname"/></td>
+				</tr>
+			</table>
+			<g:Button ui:field="butSave" text="Guardar"/>
+			<br></br>
+			<h1>Autores Recuperados</h1>
+			<br></br>		
+			<g:Button ui:field="butSelected" text="Aceptar Selección"/>
+			<br></br>
+			<p1:CellTable ui:field="dataAuthors"/>	
+		</center>				
+	</g:HTMLPanel>
+</ui:UiBinder> 

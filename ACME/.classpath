@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
+	<classpathentry exported="true" kind="lib" path="smartgwt.jar"/>
+	<classpathentry exported="true" kind="lib" path="smartgwt-skins.jar"/>
+	<classpathentry exported="true" kind="lib" path="gwtext.jar"/>
+	<classpathentry exported="true" kind="lib" path="gxt.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

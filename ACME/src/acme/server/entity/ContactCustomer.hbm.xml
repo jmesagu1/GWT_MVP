@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/11/2011 12:52:12 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="acme.server.entity.ContactCustomer" table="contact_customer" catalog="acmedb">
+        <id name="idCustomer" type="long">
+            <column name="id_customer" />
+            <generator class="foreign">
+                <param name="property">customer</param>
+            </generator>
+        </id>
+        <one-to-one name="customer" class="acme.server.entity.Customer" constrained="true"></one-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <property name="validated" type="java.lang.Boolean">
+            <column name="validated" />
+        </property>
+    </class>
+</hibernate-mapping>

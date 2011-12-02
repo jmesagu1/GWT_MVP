@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="connection">
+    	<property name="hibernate.current_session_context_class" >thread </property>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">ceiba</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/acmedb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping resource="acme/server/entity/KindMaterial.hbm.xml" />
+        <mapping resource="acme/server/entity/Ticket.hbm.xml" />
+        <mapping resource="acme/server/entity/Material.hbm.xml" />
+        <mapping resource="acme/server/entity/Classification.hbm.xml" />
+        <mapping resource="acme/server/entity/ContactCustomer.hbm.xml" />
+        <mapping resource="acme/server/entity/Collection.hbm.xml" />
+        <mapping resource="acme/server/entity/TicketPrice.hbm.xml" />
+        <mapping resource="acme/server/entity/Loan.hbm.xml" />
+        <mapping resource="acme/server/entity/Customer.hbm.xml" />
+        <mapping resource="acme/server/entity/Author.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
