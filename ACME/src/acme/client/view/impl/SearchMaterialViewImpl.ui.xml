@@ -7,7 +7,20 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<p1:CellTable ui:field="dataMaterial" pageSize="15"/>
-		<p1:SimplePager location="CENTER" ui:field="pager" pageSize="15" pageStart="0"/>	
+		<center>
+			<table>
+				<tr>
+					<td>
+						<p1:CellTable ui:field="dataMaterial" pageSize="15"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p1:SimplePager location="CENTER" ui:field="pager" pageSize="15" pageStart="0"/>
+					</td>
+				</tr>							
+			</table>
+		</center>
+		<g:Button ui:field="butAcept">Aceptar Selección</g:Button>	
 	</g:HTMLPanel>
 </ui:UiBinder> 

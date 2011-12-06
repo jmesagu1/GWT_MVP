@@ -1,8 +1,10 @@
 package acme.client;
 
+
 import acme.client.mvp.AppActivityMapper;
 import acme.client.mvp.AppPlaceHistoryMapper;
 import acme.client.place.MainPlace;
+
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;

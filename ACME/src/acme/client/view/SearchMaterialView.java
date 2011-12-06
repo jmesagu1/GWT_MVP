@@ -14,6 +14,7 @@ public interface SearchMaterialView  extends IsWidget{
 	public interface Presenter {
 		
 		 void getMaterials(int from, int to);
+		 void aceptSelectMaterial(List<MaterialTO> materialTOs); 
 	}
 
 }

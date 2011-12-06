@@ -27,24 +27,10 @@
 	<source path='shared' />
 	<stylesheet src="js/ext/resources/css/ext-all.css" />
 	<script src="js/ext/adapter/ext/ext-base.js" />
-	<script src="js/ext/ext-all.js" />
-	
+	<script src="js/ext/ext-all.js" />	
 	
 	<replace-with class="acme.client.ClientFactoryImpl">
 		<when-type-is class="acme.client.ClientFactory" />
 	</replace-with>
-	<stylesheet src="js/ext/resources/css/ext-all.css"/>
-	<script src="js/ext/adapter/ext/ext-base.js"/>
-	<script src="js/ext/ext-all.js"/>
-	<stylesheet src="js/ext/resources/css/ext-all.css"/>
-	<script src="js/ext/adapter/ext/ext-base.js"/>
-	<script src="js/ext/ext-all.js"/>
-	<stylesheet src="js/ext/resources/css/ext-all.css"/>
-	<script src="js/ext/adapter/ext/ext-base.js"/>
-	<script src="js/ext/ext-all.js"/>
-	<stylesheet src="js/ext/resources/css/ext-all.css"/>
-	<script src="js/ext/adapter/ext/ext-base.js"/>
-	<script src="js/ext/ext-all.js"/>
-
 	
 </module>

@@ -1,14 +1,17 @@
 package acme.client.view.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import acme.client.view.SearchMaterialView;
 import acme.shared.TO.AuthorTO;
 import acme.shared.TO.MaterialTO;
+
+import com.google.gwt.cell.client.ActionCell;
 import com.google.gwt.cell.client.CheckboxCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.cellview.client.CellTable;
@@ -19,6 +22,9 @@ import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
 import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.ProvidesKey;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class SearchMaterialViewImpl extends Composite implements SearchMaterialView {
 
@@ -26,6 +32,7 @@ public class SearchMaterialViewImpl extends Composite implements SearchMaterialV
 			.create(SearchMaterialViewImplUiBinder.class);
 	@UiField(provided=true) CellTable<MaterialTO> dataMaterial = new CellTable<MaterialTO>();
 	@UiField SimplePager pager;
+	@UiField Button butAcept;	
 	
 	private Presenter presenter;
 	
@@ -61,7 +68,7 @@ public class SearchMaterialViewImpl extends Composite implements SearchMaterialV
 						return object.getCode();
 					}
 				}, 
-		"Código");
+		"Codigo");
 		
 		dataMaterial.addColumn(new TextColumn<MaterialTO>() 
 				{
@@ -83,7 +90,7 @@ public class SearchMaterialViewImpl extends Composite implements SearchMaterialV
 						return object.getEdition();
 					}
 				}, 
-		"Edición");	
+		"Edicion");	
 		
 		    
 		    ProvidesKey<MaterialTO> providesKey = new ProvidesKey<MaterialTO>()
@@ -97,7 +104,8 @@ public class SearchMaterialViewImpl extends Composite implements SearchMaterialV
 						}
 					};
 					selectionModel = new MultiSelectionModel<MaterialTO>(providesKey);			    
-					dataMaterial.setSelectionModel(selectionModel, DefaultSelectionEventManager.<MaterialTO>createCheckboxManager());		
+					dataMaterial.setSelectionModel(selectionModel, DefaultSelectionEventManager.<MaterialTO>createCheckboxManager());					
+				
 	}
 
 	public SearchMaterialViewImpl() {
@@ -120,4 +128,13 @@ public class SearchMaterialViewImpl extends Composite implements SearchMaterialV
 		dataMaterial.setRowData(materialTOs);
 		dataMaterial.redraw();
 	}	
+	@UiHandler("butAcept")
+	void onButAceptClick(ClickEvent event) {
+		List<MaterialTO> materialTOs = new ArrayList<MaterialTO>();
+		for (MaterialTO t : selectionModel.getSelectedSet())
+		{
+			materialTOs.add(t);
+		}
+		presenter.aceptSelectMaterial(materialTOs);
+	}
 }

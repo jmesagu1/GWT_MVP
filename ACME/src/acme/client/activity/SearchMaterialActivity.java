@@ -2,6 +2,7 @@ package acme.client.activity;
 import java.util.List;
 
 import acme.client.ClientFactory;
+import acme.client.place.LoanPlace;
 import acme.client.place.SearchMaterialPlace;
 import acme.client.services.WrapperService;
 import acme.client.services.WrapperServiceAsync;
@@ -53,6 +54,13 @@ public class SearchMaterialActivity extends AbstractActivity implements Presente
 		};		
 			
 		wrapperService.getMaterials(from, to, callback);		
+	}
+
+	@Override
+	public void aceptSelectMaterial(List<MaterialTO> materialTOs) {
+		LoanPlace place = new LoanPlace();
+		place.setMaterialTOs(materialTOs);
+		clientFactory.getPlaceController().goTo(place);
 	}
 
 }

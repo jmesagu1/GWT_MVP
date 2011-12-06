@@ -11,6 +11,11 @@ import java.util.Set;
  */
 public class Material implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Long idMaterial;
 	private Collection collection;
 	private KindMaterial kindMaterial;
