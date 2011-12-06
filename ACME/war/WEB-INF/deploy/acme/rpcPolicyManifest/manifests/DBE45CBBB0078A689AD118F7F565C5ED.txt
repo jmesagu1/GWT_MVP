@@ -1,2 +1,0 @@
-serviceClass: acme.client.services.WrapperService
-path: 627C4E3C37FBB58479D6ACCE00780BFD.gwt.rpc

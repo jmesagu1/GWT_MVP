@@ -11,6 +11,7 @@ public interface MainView extends IsWidget {
 		public void customerAdmin();
 		public void masters();
 		public void materialAdmin();
+		public void loanMaterial();
 	}
 
 }

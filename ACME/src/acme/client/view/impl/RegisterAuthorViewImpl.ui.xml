@@ -25,7 +25,9 @@
 			<br></br>		
 			<g:Button ui:field="butSelected" text="Aceptar Selección"/>
 			<br></br>
-			<p1:CellTable ui:field="dataAuthors"/>	
-		</center>				
+			<p1:CellTable ui:field="dataAuthors" pageSize="4"/>
+			<p1:SimplePager location="CENTER" ui:field="pager" pageSize="4" pageStart="0"/>		
+		</center>
+					
 	</g:HTMLPanel>
 </ui:UiBinder> 

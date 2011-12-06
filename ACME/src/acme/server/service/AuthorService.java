@@ -22,7 +22,7 @@ public class AuthorService {
 		{
 			Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().begin();			
-			List <Author> list =  session.createQuery("from Author").list();			
+			List <Author> list =  session.createQuery("from Author").list();
 			for (Author c :list)
 			{				
 				AuthorTO to = new AuthorTO();
@@ -47,9 +47,7 @@ public class AuthorService {
 			Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().begin();
 			
-			Author author = new Author();
-			author.setFirstName(authorTO.getFirstName());
-			author.setLastName(authorTO.getLastName());
+			Author author = getAuthorAsEntity(authorTO);
 			
 			session.persist(author);
 			
@@ -62,6 +60,15 @@ public class AuthorService {
 			result = "Error registrado el Autor: "   + e.getMessage();
 		}	
 		return result;
+	}
+	
+	public static Author getAuthorAsEntity (AuthorTO authorTO)
+	{
+		Author author = new Author();
+		author.setFirstName(authorTO.getFirstName());
+		author.setLastName(authorTO.getLastName());
+		author.setIdAuthor(authorTO.getIdAuthor());		
+		return author;
 	}
 
 }

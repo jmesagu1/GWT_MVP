@@ -27,7 +27,7 @@ public class MasterService {
 		{		
 			Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().begin();
-			List <KindMaterial> list =  session.createQuery("from KindMaterial").list();			
+			List <KindMaterial> list =  session.createQuery("from KindMaterial").list();	
 			for (KindMaterial c :list)
 			{				
 				KindMaterialTO to = new KindMaterialTO();
@@ -55,7 +55,7 @@ public class MasterService {
 		{		
 			Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().begin();
-			List <Classification> list =  session.createQuery("from Classification").list();			
+			List <Classification> list =  session.createQuery("from Classification").list();
 			for (Classification c :list)
 			{				
 				ClassificationTO to = new ClassificationTO();
@@ -80,7 +80,7 @@ public class MasterService {
 		
 			Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
 			session.getTransaction().begin();
-			List <Collection> list =  session.createQuery("from Collection").list();			
+			List <Collection> list =  session.createQuery("from Collection").list();	
 			for (Collection c :list)
 			{
 				CollectionTO cTo = new CollectionTO();

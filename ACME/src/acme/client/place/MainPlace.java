@@ -9,14 +9,14 @@ public class MainPlace extends Place
 
 		@Override
 		public MainPlace getPlace(String token) {
-			// TODO Auto-generated method stub
-			return null;
+			// TODO Auto-generated method stub			
+			return new MainPlace();
 		}
 
 		@Override
 		public String getToken(MainPlace place) {
 			// TODO Auto-generated method stub
-			return null;
+			return "";
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package acme.client.activity;
 
 import acme.client.ClientFactory;
+import acme.client.place.LoanPlace;
 import acme.client.place.MainPlace;
 import acme.client.place.RegisterCustomerPlace;
 import acme.client.place.RegisterMaterialPlace;
@@ -45,6 +46,12 @@ public class MainActivity extends AbstractActivity implements Presenter
 	@Override
 	public void materialAdmin() {
 		RegisterMaterialPlace place = new RegisterMaterialPlace();
+		clientFactory.getPlaceController().goTo(place);
+	}
+
+	@Override
+	public void loanMaterial() {
+		LoanPlace place = new LoanPlace();
 		clientFactory.getPlaceController().goTo(place);
 	}
 }

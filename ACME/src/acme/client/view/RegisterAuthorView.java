@@ -1,6 +1,7 @@
 package acme.client.view;
 
 import java.util.List;
+import java.util.Set;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import acme.shared.TO.AuthorTO;
@@ -16,6 +17,6 @@ public interface RegisterAuthorView extends IsWidget
 	public interface Presenter
 	{
 		void save(AuthorTO authorTO);	
-		//void acpetSelect();
+		void aceptSelect(Set <AuthorTO> authors);
 	}
 }

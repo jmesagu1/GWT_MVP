@@ -16,7 +16,8 @@ public class MainViewImpl extends Composite implements MainView {
 	private static MainViewImplUiBinder uiBinder = GWT
 			.create(MainViewImplUiBinder.class);
 	@UiField Button butRegisterCustomer;
-	@UiField Button butAdminMaterial;
+	@UiField Button butAdminMaterial;	
+	@UiField Button butLoan;
 	
 	private Presenter presenter;
 
@@ -48,5 +49,9 @@ public class MainViewImpl extends Composite implements MainView {
 	@UiHandler("butAdminMaterial")
 	void onButAdminMaterialClick(ClickEvent event) {
 		presenter.materialAdmin();
+	}
+	@UiHandler("butLoan")
+	void onButLoanClick(ClickEvent event) {
+		presenter.loanMaterial();
 	}
 }

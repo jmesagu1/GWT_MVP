@@ -3,6 +3,7 @@ package acme.client.activity;
 import java.util.List;
 
 import acme.client.ClientFactory;
+import acme.client.place.MainPlace;
 import acme.client.place.RegisterAuthorPlace;
 import acme.client.place.RegisterMaterialPlace;
 import acme.client.services.WrapperService;
@@ -12,6 +13,7 @@ import acme.client.view.RegisterMaterialView.Presenter;
 import acme.shared.TO.ClassificationTO;
 import acme.shared.TO.CollectionTO;
 import acme.shared.TO.KindMaterialTO;
+import acme.shared.TO.MaterialTO;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
@@ -25,7 +27,7 @@ public class RegisterMaterialActivity  extends AbstractActivity implements Prese
 
 	private WrapperServiceAsync wrapperService = GWT.create(WrapperService.class);
 	private ClientFactory clientFactory;
-	private RegisterMaterialPlace registerMaterialPlace;
+	private RegisterMaterialPlace registerMaterialPlace;	
 	
 	
 	public RegisterMaterialActivity (ClientFactory clientFactory, RegisterMaterialPlace registerMaterialPlace)
@@ -41,7 +43,11 @@ public class RegisterMaterialActivity  extends AbstractActivity implements Prese
 		loadCollection();
 		loadClassification();
 		loadKindMaterial();
-		view.setPresenter(this);			 
+		view.setPresenter(this);
+		if (registerMaterialPlace.getAuthors().size() > 0)
+		{
+			view.displayAuthors(registerMaterialPlace.getAuthors());
+		}
 		panel.setWidget(view);	
 	}
 	
@@ -100,15 +106,39 @@ public class RegisterMaterialActivity  extends AbstractActivity implements Prese
 	}
 
 	@Override
-	public void saveMaterial()
-	{
-		
-	}
-
-	@Override
 	public void selectAuthor() {
 		RegisterAuthorPlace place = new RegisterAuthorPlace();
 		place.setFromPlace(RegisterAuthorActivity.MATERIAL_PLACE);
 		clientFactory.getPlaceController().goTo(place);
+	}
+
+	@Override
+	public void saveMaterial(MaterialTO materialTO) throws Exception {
+	
+		AsyncCallback<String > callback = new AsyncCallback<String>() {
+			
+			@Override
+			public void onSuccess(String result) {
+				Window.alert(result);				
+				clientFactory.getRegisterMaterialView().clearInputs();
+				MainPlace place = new MainPlace();
+				clientFactory.getPlaceController().goTo(place);
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+		};
+		
+		if (registerMaterialPlace.getAuthors().size() > 0)
+		{
+			materialTO.setAuthors(registerMaterialPlace.getAuthors());
+			wrapperService.saveMaterial(materialTO, callback);
+		}
+		else
+		{
+			throw new Exception("Debe seleccionar por lo menos un Autor");
+		}
 	}	
 }

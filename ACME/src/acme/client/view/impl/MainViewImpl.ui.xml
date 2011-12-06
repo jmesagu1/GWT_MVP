@@ -21,6 +21,9 @@
 				<tr>
 					<td><g:Button ui:field="butAdminMaterial">Administración de Material</g:Button></td>
 				</tr>
+				<tr>
+					<td><g:Button ui:field="butLoan">Préstamo de Material</g:Button></td>
+				</tr>
 			</table>
 		</center>				
 	</g:HTMLPanel>

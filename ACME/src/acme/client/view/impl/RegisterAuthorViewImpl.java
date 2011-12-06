@@ -1,13 +1,14 @@
 package acme.client.view.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import acme.client.view.RegisterAuthorView;
 import acme.shared.TO.AuthorTO;
-
 import com.google.gwt.cell.client.CheckboxCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -18,11 +19,13 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
+import com.google.gwt.user.cellview.client.SimplePager;
+import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.ProvidesKey;
-import com.google.gwt.view.client.SelectionChangeEvent;
-import com.google.gwt.view.client.SelectionModel;
 
 public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorView {
 
@@ -33,10 +36,12 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 	@UiField Button butSave;
 	@UiField(provided=true) CellTable<AuthorTO> dataAuthors = new CellTable<AuthorTO>();
 	@UiField Button butSelected;
+	@UiField SimplePager pager;
 	private boolean selectionMode;
 	private Presenter presenter;
 	private Column<AuthorTO, Boolean> checkColumn;
-	private  MultiSelectionModel<AuthorTO> selectionModel;
+	private  MultiSelectionModel<AuthorTO> selectionModel;	
+
 
 	interface RegisterAuthorViewImplUiBinder extends
 			UiBinder<Widget, RegisterAuthorViewImpl> {
@@ -70,7 +75,8 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 	}
 	
 	public void initCellTable()
-	{		
+	{
+		
 		dataAuthors.addColumn(
 				new TextColumn<AuthorTO>() 
 				{
@@ -85,10 +91,10 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 		
 		
 		checkColumn = new Column<AuthorTO, Boolean>(
-			        new CheckboxCell()) {
+			        new CheckboxCell(true, false)) {
 			      @Override
 			      public Boolean getValue(AuthorTO object) {		        
-			        return false;
+			        return selectionModel.isSelected(object);
 			      }
 			    };
 			    
@@ -102,8 +108,12 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 
 					}
 				};
-				selectionModel = new MultiSelectionModel<AuthorTO>(providesKey);
-			    dataAuthors.setSelectionModel(selectionModel);    
+				selectionModel = new MultiSelectionModel<AuthorTO>(providesKey);			    
+			    dataAuthors.setSelectionModel(selectionModel, DefaultSelectionEventManager.<AuthorTO>createCheckboxManager());
+			    
+			    SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
+			    pager = new SimplePager(TextLocation.CENTER, pagerResources, false, 0, true);	    
+			    pager.setDisplay(dataAuthors);
 			   
 	}
 
@@ -113,7 +123,7 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 		{			
 			if (selectionMode)
 			{
-				dataAuthors.addColumn(checkColumn);
+				dataAuthors.addColumn(checkColumn,SafeHtmlUtils.fromSafeConstant("<br/>"));
 			}			
 		}		
 		else
@@ -146,8 +156,14 @@ public class RegisterAuthorViewImpl extends Composite implements RegisterAuthorV
 	}
 	@UiHandler("butSelected")
 	void onBurSelectedClick(ClickEvent event) {
-		Window.alert("Seleccionados: " + selectionModel.getSelectedSet().size());
-		Window.alert("Uno de ellos: " + ((AuthorTO)selectionModel.getSelectedSet().toArray()[0]).getIdAuthor());
-		
+		Set <AuthorTO> authors = selectionModel.getSelectedSet();
+		if (authors.size() > 0)
+		{
+			presenter.aceptSelect(authors);
+		}
+		else if (selectionMode)
+		{
+			Window.alert("Por favor selecciona al menos un autor");
+		}
 	}
 }

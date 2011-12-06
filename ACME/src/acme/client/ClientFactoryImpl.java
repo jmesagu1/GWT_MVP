@@ -1,15 +1,19 @@
 package acme.client;
 
 import acme.client.view.GenericAlertView;
+import acme.client.view.LoanView;
 import acme.client.view.MainView;
 import acme.client.view.RegisterAuthorView;
 import acme.client.view.RegisterCustomerView;
 import acme.client.view.RegisterMaterialView;
+import acme.client.view.SearchMaterialView;
 import acme.client.view.impl.CustomerRegisterImpl;
 import acme.client.view.impl.GenericAlertViewtImpl;
+import acme.client.view.impl.LoanViewImpl;
 import acme.client.view.impl.MainViewImpl;
 import acme.client.view.impl.RegisterAuthorViewImpl;
 import acme.client.view.impl.RegisterMaterialViewImpl;
+import acme.client.view.impl.SearchMaterialViewImpl;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -25,6 +29,8 @@ public class ClientFactoryImpl implements ClientFactory
 	private MainView mainView;
 	private GenericAlertView genericAlertView;
 	private RegisterMaterialView registerMaterialView;
+	private SearchMaterialView searchMaterialView;
+	private LoanView loanView;
 
 	@Override
 	public EventBus getEventBus() {
@@ -82,6 +88,25 @@ public class ClientFactoryImpl implements ClientFactory
 			registerMaterialView = new RegisterMaterialViewImpl();
 		}
 		return registerMaterialView;
+	}
+
+	@Override
+	public SearchMaterialView getSearchMaterialView() {
+		
+		if (searchMaterialView == null)
+		{
+			searchMaterialView = new SearchMaterialViewImpl();
+		}
+		return searchMaterialView;
+	}
+
+	@Override
+	public LoanView getLoanView() {
+		if (loanView == null)
+		{
+			loanView = new LoanViewImpl();
+		}
+		return loanView;
 	}
 
 }

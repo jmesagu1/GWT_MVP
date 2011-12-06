@@ -1,6 +1,7 @@
 package acme.client.activity;
 
 import java.util.List;
+import java.util.Set;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
@@ -10,6 +11,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import acme.client.ClientFactory;
 import acme.client.place.RegisterAuthorPlace;
+import acme.client.place.RegisterMaterialPlace;
 import acme.client.services.WrapperService;
 import acme.client.services.WrapperServiceAsync;
 import acme.client.view.GenericAlertView;
@@ -90,6 +92,13 @@ public class RegisterAuthorActivity extends AbstractActivity implements Presente
 			}		
 		};
 		wrapperService.getAuthorTOs(callback);
+	}
+
+	@Override
+	public void aceptSelect(Set<AuthorTO> authors) {
+		RegisterMaterialPlace place = new RegisterMaterialPlace();
+		place.setAuthors(authors);
+		clientFactory.getPlaceController().goTo(place);
 	}
 
 }

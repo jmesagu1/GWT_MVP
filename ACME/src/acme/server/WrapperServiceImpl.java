@@ -6,11 +6,13 @@ import acme.client.services.WrapperService;
 import acme.server.manager.AuthorManager;
 import acme.server.manager.CustomerManager;
 import acme.server.manager.MasterManager;
+import acme.server.manager.MaterialManager;
 import acme.shared.TO.AuthorTO;
 import acme.shared.TO.ClassificationTO;
 import acme.shared.TO.CollectionTO;
 import acme.shared.TO.CustomerTO;
 import acme.shared.TO.KindMaterialTO;
+import acme.shared.TO.MaterialTO;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -63,6 +65,17 @@ public class WrapperServiceImpl extends RemoteServiceServlet implements WrapperS
 	@Override
 	public List<AuthorTO> getAuthorTOs() {
 		return AuthorManager.getInstance().getAuthorTOs();
+	}
+
+	@Override
+	public String saveMaterial(MaterialTO materialTO) {		
+		
+		return MaterialManager.getInstance().saveMaterial(materialTO);
+	}
+
+	@Override
+	public List<MaterialTO> getMaterials(int from, int to) {
+		return MaterialManager.getInstance().getMaterials(from, to);
 	}
 
 }

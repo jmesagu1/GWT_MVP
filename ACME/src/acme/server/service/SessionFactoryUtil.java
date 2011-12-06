@@ -21,7 +21,7 @@ public class SessionFactoryUtil {
 	}
 	
 	public static SessionFactory getSessionFactory()
-	{
+	{		
 		return sessionFactory;
 	}
 

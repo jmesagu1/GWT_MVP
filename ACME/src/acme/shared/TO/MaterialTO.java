@@ -14,12 +14,12 @@ public class MaterialTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long idMaterial;
-	private Collection collection;
+	private CollectionTO collection;
 	private KindMaterialTO kindMaterial;
 	private ClassificationTO classification;
 	private String name;
 	private Long units;
-	private Long edition;
+	private String edition;
 	private Date publishDate;
 	private Boolean available;
 	private String code;
@@ -31,10 +31,10 @@ public class MaterialTO implements Serializable {
 	public void setIdMaterial(Long idMaterial) {
 		this.idMaterial = idMaterial;
 	}
-	public Collection getCollection() {
+	public CollectionTO getCollection() {
 		return collection;
 	}
-	public void setCollection(Collection collection) {
+	public void setCollection(CollectionTO collection) {
 		this.collection = collection;
 	}
 	public KindMaterialTO getKindMaterial() {
@@ -61,10 +61,10 @@ public class MaterialTO implements Serializable {
 	public void setUnits(Long units) {
 		this.units = units;
 	}
-	public Long getEdition() {
+	public String getEdition() {
 		return edition;
 	}
-	public void setEdition(Long edition) {
+	public void setEdition(String edition) {
 		this.edition = edition;
 	}
 	public Date getPublishDate() {
