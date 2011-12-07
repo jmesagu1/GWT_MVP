@@ -6,6 +6,7 @@ import acme.client.view.MainView;
 import acme.client.view.RegisterAuthorView;
 import acme.client.view.RegisterCustomerView;
 import acme.client.view.RegisterMaterialView;
+import acme.client.view.SearchCustomerView;
 import acme.client.view.SearchMaterialView;
 
 import com.google.gwt.event.shared.EventBus;
@@ -23,6 +24,7 @@ public interface ClientFactory {
 	 RegisterMaterialView getRegisterMaterialView();
 	 SearchMaterialView getSearchMaterialView();
 	 LoanView getLoanView();
+	 SearchCustomerView getSearchCustomerView();
 	 
 
 }

@@ -11,6 +11,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
@@ -26,9 +27,21 @@ public class LoanViewImpl extends Composite implements LoanView {
 	@UiField(provided=true) CellTable<MaterialTO> dataMaterial = new CellTable<MaterialTO>();
 	@UiField(provided=true) CellTable<CustomerTO> dataCustomer = new CellTable<CustomerTO>();
 	@UiField Button butSearchCustomer;
+	@UiField Button butRegisterLoan;
 	
 
 	private Presenter presenter;
+	
+	public LoanViewImpl() {
+		initWidget(uiBinder.createAndBindUi(this));
+		initDataCustomer();
+		initDataMaterial();
+	}
+
+	public LoanViewImpl(String firstName) {
+		initWidget(uiBinder.createAndBindUi(this));
+		
+	}
 	
 	interface LoanViewImplUiBinder extends UiBinder<Widget, LoanViewImpl> {
 	}
@@ -90,19 +103,73 @@ public class LoanViewImpl extends Composite implements LoanView {
 	
 	public void initDataCustomer ()
 	{
+		dataCustomer.addColumn(new TextColumn<CustomerTO>() 
+				{
 		
-	}
-
-	public LoanViewImpl() {
-		initWidget(uiBinder.createAndBindUi(this));
-		initDataCustomer();
-		initDataMaterial();
-	}
-
-	public LoanViewImpl(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
+					@Override
+					public String getValue(CustomerTO object) {
+						
+						return object.getIdCustomer().toString();
+					}
+				}, 
+		"Codigo");
+	    
+	    dataCustomer.addColumn(new TextColumn<CustomerTO>() 
+				{
 		
+					@Override
+					public String getValue(CustomerTO object) {
+						
+						return object.getDni().toString();
+					}
+				}, 
+		"Documento");
+	    
+	    
+	    dataCustomer.addColumn(new TextColumn<CustomerTO>() 
+				{
+		
+					@Override
+					public String getValue(CustomerTO object) {
+						
+						return object.getFirstName();
+					}
+				}, 
+		"Nombre");
+	    
+	    dataCustomer.addColumn(new TextColumn<CustomerTO>() 
+				{
+		
+					@Override
+					public String getValue(CustomerTO object) {
+						
+						return object.getLastName();
+					}
+				}, 
+		"Apellido");
+	    
+	    
+	    ActionCell<CustomerTO> cell = new ActionCell<CustomerTO>("Quitar",
+				new ActionCell.Delegate<CustomerTO>() 
+				{
+			      @Override
+			      public void execute(CustomerTO contact) 
+			      {
+			    	  presenter.removeCustomer();
+			      }
+				});
+		
+		Column<CustomerTO, CustomerTO> column = new Column<CustomerTO, CustomerTO>(cell) 
+				{
+		      	@Override
+		      	public CustomerTO getValue(CustomerTO object) {
+		      		return object;
+		      	}
+			};		
+		
+			dataCustomer.addColumn(column, "Action");
 	}
+	
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
@@ -113,6 +180,7 @@ public class LoanViewImpl extends Composite implements LoanView {
 	}
 	@UiHandler("butSearchCustomer")
 	void onButSearchCustomerClick(ClickEvent event) {
+		presenter.searchCustomer();
 	}
 
 	@Override
@@ -127,5 +195,10 @@ public class LoanViewImpl extends Composite implements LoanView {
 		list.add(customerTO);
 		dataCustomer.setRowData(list);
 		dataCustomer.redraw();
+	}
+	@UiHandler("butRegisterLoan")
+	void onButRegisterLoanClick(ClickEvent event) {
+		
+		Window.alert("Developing function");
 	}
 }

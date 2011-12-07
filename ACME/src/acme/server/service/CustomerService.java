@@ -1,5 +1,8 @@
 package acme.server.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 
 import acme.server.entity.ContactCustomer;
@@ -20,6 +23,26 @@ public class CustomerService
 		session.getTransaction().commit();	
 		customerTO.setIdCustomer(customer.getIdCustomer());
 		return customerTO;
+	}
+	
+	public List <CustomerTO> getAllCustomers()
+	{
+		List<CustomerTO> customerTOs = new ArrayList<CustomerTO>();
+		Session session = SessionFactoryUtil.getSessionFactory().getCurrentSession();
+		session.getTransaction().begin();
+		List<Customer> list = session.createQuery("from Customer").list();
+		for (Customer c : list)
+		{
+			CustomerTO customerTO = new CustomerTO();
+			customerTO.setAddress(c.getAddress());
+			customerTO.setBirthday(c.getBirthday());
+			customerTO.setDni(c.getDni());
+			customerTO.setFirstName(c.getFirstName());
+			customerTO.setIdCustomer(c.getIdCustomer());
+			customerTO.setLastName(c.getLastName());
+			customerTOs.add(customerTO);
+		}
+		return customerTOs;
 	}
 	
 	public Customer getCustomerAsEntity (CustomerTO customerTO)

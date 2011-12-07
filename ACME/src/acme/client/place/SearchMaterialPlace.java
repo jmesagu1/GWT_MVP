@@ -5,6 +5,7 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class SearchMaterialPlace extends Place 
 {
+	private LoanPlace loanPlace;
 	public static class Tokenizer implements PlaceTokenizer<SearchMaterialPlace> {
 
 		@Override
@@ -19,5 +20,11 @@ public class SearchMaterialPlace extends Place
 			return "";
 		}
 		
+	}
+	public LoanPlace getLoanPlace() {
+		return loanPlace;
+	}
+	public void setLoanPlace(LoanPlace loanPlace) {
+		this.loanPlace = loanPlace;
 	}
 }

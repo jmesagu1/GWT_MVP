@@ -1,0 +1,33 @@
+<project name="gwt" basedir="." default="start-tomcat">
+	<description>Compile the tasks def for GWT</description>
+	<property name="app.name" value="gwt" />
+	<property name="src.dir" value="src" />
+	<property name="webinf.dir" value="war/WEB-INF" />
+	<property name="classes.dir" value="${webinf.dir}/classes" />
+	<property name="lib.dir" value="${webinf.dir}/lib" />	
+	<property name="war.dir" value="war" />
+	<property name="tomcat.home" value="D:\GWT\Taller\Tomcat 7\apache-tomcat-7.0.23" />
+	<property name="deploy.dir" value="D:\GWT\Taller\Tomcat 7\apache-tomcat-7.0.23/webapps" />
+	<property name="work.dir" value="${tomcat.home}/work/Catalina" />
+	<property name="gwt.home" value="C:\Program Files\Eclipse\eclipse\plugins\com.google.gwt.eclipse.sdkbundle_2.4.0.relr37v201110112027\gwt-2.4.0" />
+	<property name="deploy.bat.path" value="${tomcat.home}\bin\startup.bat"/>
+	<property name="gwt.args" value="" />
+
+	
+	<target name="copy">
+		<delete dir="${deploy.dir}/${app.name}"/>
+		<mkdir dir="${deploy.dir}/${app.name}"/>
+		<copy todir="${deploy.dir}/${app.name}">
+		<fileset dir="war/"/>
+		</copy> 
+	</target>	
+	
+	<target name="start-tomcat" depends="copy">		
+		<exec executable="cmd">
+		    <arg value="/c"/>
+		    <arg value="${deploy.bat.path}"/>
+		    <arg value="-p"/>
+		  </exec>
+	</target>			
+	
+</project>

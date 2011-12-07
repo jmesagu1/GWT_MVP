@@ -23,6 +23,6 @@ public interface WrapperService extends RemoteService
 	public List <AuthorTO> getAuthorTOs();
 	public String saveMaterial (MaterialTO materialTO);
 	public List<MaterialTO> getMaterials (int from, int to);			
-	
+	public List <CustomerTO> getCustomerTOs();
 	
 }

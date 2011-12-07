@@ -78,4 +78,10 @@ public class WrapperServiceImpl extends RemoteServiceServlet implements WrapperS
 		return MaterialManager.getInstance().getMaterials(from, to);
 	}
 
+	@Override
+	public List<CustomerTO> getCustomerTOs() {
+		
+		return CustomerManager.getAllCustomers();
+	}
+
 }

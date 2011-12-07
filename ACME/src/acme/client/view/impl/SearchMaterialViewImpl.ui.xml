@@ -20,7 +20,7 @@
 					</td>
 				</tr>							
 			</table>
-		</center>
-		<g:Button ui:field="butAcept">Aceptar Selección</g:Button>	
+			<g:Button ui:field="butAcept">Aceptar Selección</g:Button>	
+		</center>		
 	</g:HTMLPanel>
 </ui:UiBinder> 

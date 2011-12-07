@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 public class SearchMaterialActivity extends AbstractActivity implements Presenter
 {
 	private SearchMaterialPlace searchMaterialPlace;
-	private ClientFactory clientFactory;
+	private ClientFactory clientFactory;	
 	private WrapperServiceAsync wrapperService = GWT.create(WrapperService.class);
 
 	public SearchMaterialActivity (ClientFactory clientFactory, SearchMaterialPlace searchMaterialPlace )
@@ -58,7 +58,7 @@ public class SearchMaterialActivity extends AbstractActivity implements Presente
 
 	@Override
 	public void aceptSelectMaterial(List<MaterialTO> materialTOs) {
-		LoanPlace place = new LoanPlace();
+		LoanPlace place = searchMaterialPlace.getLoanPlace();
 		place.setMaterialTOs(materialTOs);
 		clientFactory.getPlaceController().goTo(place);
 	}

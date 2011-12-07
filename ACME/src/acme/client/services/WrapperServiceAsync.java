@@ -29,4 +29,6 @@ public interface WrapperServiceAsync {
 
 	void getMaterials(int from, int to, AsyncCallback<List<MaterialTO>> callback);
 
+	void getCustomerTOs(AsyncCallback<List<CustomerTO>> callback);
+
 }

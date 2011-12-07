@@ -18,6 +18,7 @@
 					<td><p1:CellTable ui:field="dataMaterial"/></td>				
 				</tr>			
 			</table>
-		</center>		
+			<g:Button ui:field="butRegisterLoan" text="Registrar Préstamo"/>
+		</center>				
 	</g:HTMLPanel>
 </ui:UiBinder> 
